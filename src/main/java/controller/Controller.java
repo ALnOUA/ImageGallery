@@ -1,9 +1,12 @@
 package controller;
 
-import model.AbstractImage;
 import model.Interfaces.Image;
 import model.Model;
-import model.SlideShow;
+import model.entity.AbstractImage;
+import model.entity.Menu;
+import model.entity.MenuEntry;
+import model.entity.SlideShow;
+import model.service.CreateMenuService;
 import view.View;
 
 import java.util.*;
@@ -21,35 +24,15 @@ public class Controller {
         this.model = model;
         this.view = view;
     }
-     public void menuOptions(Scanner sc){
-         view.printMenu();
-         String decision = sc.nextLine();
-         InputImage inputImage = new InputImage(view,sc);
-         SlideShow slideShow = new SlideShow();
 
-        switch (decision){
-            case "1":
-                view.printMessage(INPUT_FORMAT);
-                String format = sc.next();
-                slideShow.addImageToSlideShow(inputImage.inputDataForNewImage(format));
-            case "2":// TODO: 29.07.2019   break;
-            case "3":
-                slideShow.show(slideShow.getSlideShow());
-                break;
-            case "4":// TODO: 29.07.2019
-                break;
-            default: view.printMessage("Somthing goes wrong");
-
-
-        }
-
-
-     }
 
     public void processUser() {
         Scanner sc = new Scanner(System.in);
         view.printMessage("Start\n");
-        menuOptions(sc);
+        CreateMenuService createMenuService= new CreateMenuService();
+        Menu menu = createMenuService.createMenu();
+        menu.process();
+
 
 
 

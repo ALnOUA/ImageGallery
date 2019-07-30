@@ -1,12 +1,11 @@
 package controller;
 
 import lombok.Getter;
-import model.AbstractImage;
-import model.Interfaces.Image;
-import model.SlideShow;
+import model.entity.AbstractImage;
 import model.factories.AbstractImagesFactory;
 import view.View;
 
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 import static controller.RegexContainer.*;
@@ -21,8 +20,7 @@ public class InputImage {
     private String tag;
     private String name;
     private String quality;
-    private String dateOfChanges;
-    private String format;
+    private LocalDateTime dateOfChanges;
 
     public InputImage(View view, Scanner sc) {
         this.view = view;
@@ -30,7 +28,7 @@ public class InputImage {
 
     }
 
-    public Image inputDataForNewImage(String format) {
+    public AbstractImage inputDataForNewImage(String format) {
         UtilityController utilityController = new UtilityController(sc, view);
         AbstractImagesFactory abstractImagesFactory = new AbstractImagesFactory();
 
@@ -38,7 +36,7 @@ public class InputImage {
         tag = utilityController.inputValueWithScanner(INPUT_TAG, REGEX_NAME);
         name = utilityController.inputValueWithScanner(INPUT_NAME, REGEX_NAME);
         quality = utilityController.inputValueWithScanner(INPUT_QUALITY, REGEX_NAME);
-        dateOfChanges = utilityController.inputValueWithScanner(INPUT_DATE, REGEX_DATA);
+        dateOfChanges = LocalDateTime.now();
         return  abstractImagesFactory.createImage(format,size,tag,name,quality,dateOfChanges);
     }
 }

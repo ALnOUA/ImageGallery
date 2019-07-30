@@ -1,10 +1,6 @@
 import controller.Controller;
-import controller.InputImage;
-import model.AbstractImage;
 import model.Model;
-import model.SlideShow;
-import model.factories.AbstractImagesFactory;
-import model.factories.PngImagesFactory;
+import model.entity.AbstractImage;
 import view.View;
 
 public class Application {

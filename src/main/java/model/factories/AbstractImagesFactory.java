@@ -1,10 +1,12 @@
 package model.factories;
 
-import model.Interfaces.Image;
+import model.entity.AbstractImage;
+
+import java.time.LocalDateTime;
 
 
 public class AbstractImagesFactory {
-    public Image createImage(String format,long size, String tag, String name, String quality, String dateOfChanges) {
+    public AbstractImage createImage(String format, long size, String tag, String name, String quality, LocalDateTime dateOfChanges) {
         switch (format) {
             case "Png":
                 System.out.println("AbstractFac");

@@ -1,7 +1,9 @@
-package model;
+package model.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
 
 @Setter
 @Getter
@@ -11,17 +13,13 @@ public abstract class AbstractImage {
     private String tag;
     private String name;
     private String quality;
-    private String dateOfChanges;
+    private LocalDateTime dateOfChanges;
 
-  /*  enum Quality{
-        LOW("input.quality.low"), MEDIUM("input.quality.medium"), HIGH("input.quality.high"), ULTRA("input.quality.ultra");
-        String quality;
-        Quality(String quality){
-            this.quality=quality;
-        }
-    }*/
+    public LocalDateTime getDateOfChanges() {
+        return dateOfChanges;
+    }
 
-    public AbstractImage(long size, String tag, String name, String quality, String dateOfChanges) {
+    public AbstractImage(long size, String tag, String name, String quality, LocalDateTime dateOfChanges) {
         this.size = size;
         this.tag = tag;
         this.name = name;
