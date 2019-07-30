@@ -1,15 +1,10 @@
 package model.entity;
 
-import controller.InputImage;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-
-import static view.Constants.INPUT_FORMAT;
 
 public class Menu {
     private static final String MENU_PATTERN = "%s - %s\n";
